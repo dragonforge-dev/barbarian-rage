@@ -1,0 +1,192 @@
+[gd_scene load_steps=22 format=3 uid="uid://cd77becdofh1j"]
+
+[ext_resource type="Theme" uid="uid://dmc8jctfyg32v" path="res://assets/ui/themes/otworld_theme.tres" id="1_3ydwb"]
+[ext_resource type="Script" path="res://ui/hud_overlay.gd" id="1_yu3n0"]
+[ext_resource type="Script" path="res://ui/depression_progress_bar.gd" id="2_xex7x"]
+[ext_resource type="PackedScene" uid="uid://dgsen2jkmg2gb" path="res://ui/keyboard_key.tscn" id="4_dnwf4"]
+[ext_resource type="PackedScene" uid="uid://cweatu86e5r4a" path="res://ui/music_display.tscn" id="4_wpfpo"]
+[ext_resource type="Texture2D" uid="uid://rr0fsqyix4l3" path="res://assets/ui/icons/64_round/T_FortressSide_Hi_Def_Icons_Pack2 (108).png" id="5_goghl"]
+[ext_resource type="Texture2D" uid="uid://ccy6rxms10u2u" path="res://assets/ui/icons/input/keys_flat/keyboard_1_outline.png" id="5_mqpgh"]
+[ext_resource type="Texture2D" uid="uid://dp6qjxnx5u0cu" path="res://assets/ui/icons/input/keys_flat/keyboard_1.png" id="6_2x663"]
+[ext_resource type="Texture2D" uid="uid://b5x647ea8e8lk" path="res://assets/ui/icons/64/T_FortressSide_Hi_Def_Icons_Pack2 (128).png" id="6_dj136"]
+[ext_resource type="Texture2D" uid="uid://b42eq5q58rngn" path="res://assets/ui/icons/64/T_FortressSide_Hi_Def_Icons_Pack2 (153).png" id="6_iyiiy"]
+[ext_resource type="Texture2D" uid="uid://tn4kd1fukdwv" path="res://assets/ui/icons/64/T_FortressSide_Hi_Def_Icons_Pack2 (160).png" id="7_0mvug"]
+[ext_resource type="Texture2D" uid="uid://didvxol0abn8e" path="res://assets/ui/icons/64_round/FortressSide_Icons_Pack10_ (398).png" id="7_8exwl"]
+[ext_resource type="Texture2D" uid="uid://b5v0nc128wx34" path="res://assets/ui/icons/64_round/T_FortressSide_Hi_Def_Icons_Pack2 (136).png" id="8_btosl"]
+[ext_resource type="PackedScene" uid="uid://2naptj2c5in8" path="res://ui/hud_ability.tscn" id="9_isbxn"]
+[ext_resource type="Texture2D" uid="uid://bhpw5d2i58e30" path="res://assets/ui/icons/64_round/T_FortressSide_Hi_Def_Icons_Pack2 (111).png" id="9_n8elm"]
+[ext_resource type="Texture2D" uid="uid://bs44h83buygp7" path="res://assets/ui/icons/64_round/T_FortressSide_Hi_Def_Icons_Pack2 (283).png" id="11_yjsl8"]
+[ext_resource type="Texture2D" uid="uid://nu473mosxb2c" path="res://assets/ui/icons/64_round/FortressSide_Icons_Pack10_ (452).png" id="13_3uc7v"]
+[ext_resource type="Texture2D" uid="uid://c6uy5qbtai44e" path="res://assets/ui/icons/64_round/T_FortressSide_Hi_Def_Icons_Pack2 (163).png" id="14_n3u57"]
+[ext_resource type="PackedScene" uid="uid://ddp75p1flqcjj" path="res://ui/hud_passive_ability.tscn" id="15_d5byf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_byc5e"]
+bg_color = Color(0.6, 0.6, 0.596078, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yk74b"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[node name="HUDOverlay" type="CanvasLayer"]
+script = ExtResource("1_yu3n0")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_3ydwb")
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="DepressionMeter" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/DepressionMeter"]
+layout_mode = 2
+text = "Depression"
+
+[node name="DepressionProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/DepressionMeter"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(600, 20)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_byc5e")
+theme_override_styles/fill = SubResource("StyleBoxFlat_yk74b")
+fill_mode = 1
+show_percentage = false
+script = ExtResource("2_xex7x")
+
+[node name="TimeUpLabel" type="Label" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 48
+text = "You are too depressed to continue..."
+
+[node name="LevelCompleteLabel" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 48
+text = "Level Complete!"
+
+[node name="MusicDisplay" parent="MarginContainer" instance=ExtResource("4_wpfpo")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="IceShardContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="1" parent="MarginContainer/HBoxContainer/IceShardContainer" instance=ExtResource("4_dnwf4")]
+layout_mode = 2
+key_enum = 49
+key_name = "1"
+
+[node name="Key_Unpressed" parent="MarginContainer/HBoxContainer/IceShardContainer/1" index="0"]
+texture = ExtResource("5_mqpgh")
+
+[node name="Key_Pressed" parent="MarginContainer/HBoxContainer/IceShardContainer/1" index="1"]
+texture = ExtResource("6_2x663")
+
+[node name="IceShard" parent="MarginContainer/HBoxContainer/IceShardContainer" instance=ExtResource("9_isbxn")]
+layout_mode = 2
+ability_icon_64_x_64_px = ExtResource("6_dj136")
+
+[node name="AbilityIcon" parent="MarginContainer/HBoxContainer/IceShardContainer/IceShard/Mask" index="0"]
+texture = ExtResource("6_dj136")
+
+[node name="IceWaveContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="2" parent="MarginContainer/HBoxContainer/IceWaveContainer" instance=ExtResource("4_dnwf4")]
+layout_mode = 2
+key_enum = 50
+key_name = "2"
+
+[node name="IceWave" parent="MarginContainer/HBoxContainer/IceWaveContainer" instance=ExtResource("9_isbxn")]
+layout_mode = 2
+ability_icon_64_x_64_px = ExtResource("6_iyiiy")
+
+[node name="IceBombContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="3" parent="MarginContainer/HBoxContainer/IceBombContainer" instance=ExtResource("4_dnwf4")]
+layout_mode = 2
+key_enum = 51
+key_name = "3"
+
+[node name="IceBomb" parent="MarginContainer/HBoxContainer/IceBombContainer" instance=ExtResource("9_isbxn")]
+layout_mode = 2
+ability_icon_64_x_64_px = ExtResource("7_0mvug")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="TimeDenial" parent="MarginContainer/VBoxContainer2" instance=ExtResource("15_d5byf")]
+layout_mode = 2
+ability_icon_64_x_64_px = ExtResource("5_goghl")
+is_round = true
+
+[node name="Mask" parent="MarginContainer/VBoxContainer2/TimeDenial" index="0"]
+clip_children = 1
+
+[node name="AbilityIcon" parent="MarginContainer/VBoxContainer2/TimeDenial/Mask" index="0"]
+texture = ExtResource("5_goghl")
+
+[node name="RemorhazSpeed" parent="MarginContainer/VBoxContainer2" instance=ExtResource("15_d5byf")]
+layout_mode = 2
+ability_icon_64_x_64_px = ExtResource("7_8exwl")
+is_round = true
+
+[node name="Destruction" parent="MarginContainer/VBoxContainer2" instance=ExtResource("15_d5byf")]
+layout_mode = 2
+ability_icon_64_x_64_px = ExtResource("8_btosl")
+is_round = true
+
+[node name="QuantCondenser" parent="MarginContainer/VBoxContainer2" instance=ExtResource("15_d5byf")]
+layout_mode = 2
+ability_icon_64_x_64_px = ExtResource("9_n8elm")
+is_round = true
+
+[node name="BlackHole" parent="MarginContainer/VBoxContainer2" instance=ExtResource("15_d5byf")]
+layout_mode = 2
+ability_icon_64_x_64_px = ExtResource("11_yjsl8")
+is_round = true
+
+[node name="IceSword" parent="MarginContainer/VBoxContainer2" instance=ExtResource("15_d5byf")]
+layout_mode = 2
+ability_icon_64_x_64_px = ExtResource("13_3uc7v")
+is_round = true
+
+[node name="IceArmor" parent="MarginContainer/VBoxContainer2" instance=ExtResource("15_d5byf")]
+layout_mode = 2
+ability_icon_64_x_64_px = ExtResource("14_n3u57")
+is_round = true
+
+[editable path="MarginContainer/HBoxContainer/IceShardContainer/1"]
+[editable path="MarginContainer/HBoxContainer/IceShardContainer/IceShard"]
+[editable path="MarginContainer/VBoxContainer2/TimeDenial"]

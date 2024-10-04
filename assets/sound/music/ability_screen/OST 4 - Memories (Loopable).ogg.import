@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://mser6170nkvh"
+path="res://.godot/imported/OST 4 - Memories (Loopable).ogg-6f6447d507377cfcfebb77d8213924e0.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sound/music/ability_screen/OST 4 - Memories (Loopable).ogg"
+dest_files=["res://.godot/imported/OST 4 - Memories (Loopable).ogg-6f6447d507377cfcfebb77d8213924e0.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

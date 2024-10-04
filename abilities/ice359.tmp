@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5it0ac6tdbcv"]
+
+[ext_resource type="PackedScene" uid="uid://besqa6toe5rrl" path="res://assets/models/projectiles/ice_shard.glb" id="1_8qmoh"]
+[ext_resource type="Script" path="res://abilities/ice_shard.gd" id="2_7up2i"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ydggj"]
+radius = 0.2
+
+[node name="IceShard" instance=ExtResource("1_8qmoh")]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("2_7up2i")
+
+[node name="ice_shard" parent="." index="0"]
+transform = Transform3D(-1.51617e-08, -0.346859, 0, 0.346859, -1.51617e-08, 0, 0, 0, 0.346859, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_ydggj")
+
+[node name="Timer" type="Timer" parent="." index="2"]

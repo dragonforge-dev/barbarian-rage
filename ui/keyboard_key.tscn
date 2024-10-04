@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgsen2jkmg2gb"]
+
+[ext_resource type="Script" path="res://ui/keyboard_key.gd" id="1_7amrq"]
+
+[node name="KeyboardKey" type="Control"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 64.0
+offset_bottom = 64.0
+script = ExtResource("1_7amrq")
+
+[node name="Key_Unpressed" type="Sprite2D" parent="."]
+centered = false
+
+[node name="Key_Pressed" type="Sprite2D" parent="."]
+visible = false
+centered = false

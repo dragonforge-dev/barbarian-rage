@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cgl4kw2ifdqs4"
+path="res://.godot/imported/Wood Chop Loose A.wav-c42b38218311803a717c08e1bf1a56bd.sample"
+
+[deps]
+
+source_file="res://assets/sound/sfx/destructibles/Wood Chop Loose A.wav"
+dest_files=["res://.godot/imported/Wood Chop Loose A.wav-c42b38218311803a717c08e1bf1a56bd.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

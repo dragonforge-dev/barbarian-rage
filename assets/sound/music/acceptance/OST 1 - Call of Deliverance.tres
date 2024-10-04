@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Song" load_steps=3 format=3 uid="uid://cejlwvdlfbjr"]
+
+[ext_resource type="Script" path="res://utilities/resource_types/song.gd" id="1_gt3ln"]
+[ext_resource type="AudioStream" uid="uid://wesocvdujyg" path="res://assets/sound/music/acceptance/OST 1 - Call of Deliverance (Loopable).ogg" id="2_b2nxb"]
+
+[resource]
+script = ExtResource("1_gt3ln")
+song = ExtResource("2_b2nxb")
+title = "Call of Deliverance"
+artist = "ELVGames & PEGGU-SENSEI"
+album = "Atmospheric Harp Music Volume 2"
+album_link = "https://elvgames.itch.io/atmospheric-harp-music-ii"

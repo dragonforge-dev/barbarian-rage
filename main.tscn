@@ -1,0 +1,57 @@
+[gd_scene load_steps=17 format=3 uid="uid://fi15i4c7xswo"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_j8t8q"]
+[ext_resource type="PackedScene" uid="uid://ew2xkwwn0ljj" path="res://environment/rooms/rage_room.tscn" id="1_k6mrw"]
+[ext_resource type="PackedScene" uid="uid://haey6kmlqi3y" path="res://mobiles/characters/volfrae_white_mourning_blood_claw.tscn" id="2_bvdfv"]
+[ext_resource type="Resource" uid="uid://1q6j7h4iys0n" path="res://assets/sound/music/begin_game/OST 3 - Celtic Mist (Vocals).tres" id="2_xg0as"]
+[ext_resource type="Resource" uid="uid://17yodtvu7frn" path="res://assets/sound/music/success/MS01triumph2NL.tres" id="3_1eoos"]
+[ext_resource type="PackedScene" uid="uid://cd77becdofh1j" path="res://ui/hud_overlay.tscn" id="3_ru6jw"]
+[ext_resource type="Script" path="res://utilities/resource_types/song.gd" id="4_iu6uv"]
+[ext_resource type="Resource" uid="uid://d0fmwkg5xfgoy" path="res://assets/sound/music/game_over/MS02gameover1NL.tres" id="5_2qs05"]
+[ext_resource type="PackedScene" uid="uid://cvx1mk6ylxv6t" path="res://environment/rooms/rage_room_2.tscn" id="5_j3cw0"]
+[ext_resource type="PackedScene" uid="uid://dep6wvqsaetpq" path="res://ui/ability_tree.tscn" id="5_lduec"]
+[ext_resource type="PackedScene" uid="uid://b2ke4ti3qxt0p" path="res://environment/rooms/rage_room_3.tscn" id="6_5wux8"]
+[ext_resource type="Resource" uid="uid://dyq2f611lrsp6" path="res://assets/sound/music/game_over/MS02gameover3NL.tres" id="6_dt68l"]
+[ext_resource type="PackedScene" uid="uid://fgdhpfkpxaaa" path="res://ui/main_menu.tscn" id="6_fk14q"]
+[ext_resource type="Resource" uid="uid://bas7v53gn26pq" path="res://assets/sound/music/game_over/OLDMS02gameover7NL.tres" id="7_8k7t1"]
+[ext_resource type="PackedScene" uid="uid://dm23owwocyx36" path="res://environment/rooms/rage_room_4.tscn" id="7_ct34r"]
+[ext_resource type="PackedScene" uid="uid://dt07f11xrg5a4" path="res://environment/rooms/rage_room_5.tscn" id="8_086a6"]
+
+[node name="Main" type="Node3D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_j8t8q")
+player = NodePath("VolfraeWhiteMourningBloodClaw")
+beginning_music = ExtResource("2_xg0as")
+success_music = ExtResource("3_1eoos")
+failure_music = Array[ExtResource("4_iu6uv")]([ExtResource("5_2qs05"), ExtResource("6_dt68l"), ExtResource("7_8k7t1")])
+levels = Array[PackedScene]([ExtResource("1_k6mrw"), ExtResource("5_j3cw0"), ExtResource("6_5wux8"), ExtResource("7_ct34r"), ExtResource("8_086a6")])
+
+[node name="VolfraeWhiteMourningBloodClaw" parent="." node_paths=PackedStringArray("depression_timer") instance=ExtResource("2_bvdfv")]
+visible = false
+depression_timer = NodePath("../DepressionTimer")
+
+[node name="HUDOverlay" parent="." node_paths=PackedStringArray("player", "depression_timer") instance=ExtResource("3_ru6jw")]
+visible = false
+player = NodePath("../VolfraeWhiteMourningBloodClaw")
+depression_timer = NodePath("../DepressionTimer")
+
+[node name="AbilityTree" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_lduec")]
+visible = false
+player = NodePath("../VolfraeWhiteMourningBloodClaw")
+
+[node name="MainMenu" parent="." instance=ExtResource("6_fk14q")]
+visible = false
+
+[node name="DepressionTimer" type="Timer" parent="."]
+
+[node name="DelayTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="enter_level" from="." to="MainMenu" method="_on_main_enter_level"]
+[connection signal="start_game" from="." to="MainMenu" method="_on_main_start_game"]
+[connection signal="load_game" from="MainMenu" to="." method="_on_main_menu_load_game"]
+[connection signal="new_game" from="MainMenu" to="." method="_on_main_menu_new_game"]
+[connection signal="return_to_game" from="MainMenu" to="." method="_on_main_menu_return_to_game"]
+[connection signal="save_game" from="MainMenu" to="." method="_on_main_menu_save_game"]
+[connection signal="timeout" from="DepressionTimer" to="." method="_on_depression_timer_timeout"]
+[connection signal="timeout" from="DepressionTimer" to="VolfraeWhiteMourningBloodClaw" method="_on_depression_timer_timeout"]
+[connection signal="timeout" from="DelayTimer" to="." method="_on_delay_timer_timeout"]

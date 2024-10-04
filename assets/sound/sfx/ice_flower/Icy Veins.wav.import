@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bgj2idk5c7xyh"
+path="res://.godot/imported/Icy Veins.wav-de126187410640351dbb4f4ff4b16212.sample"
+
+[deps]
+
+source_file="res://assets/sound/sfx/ice_flower/Icy Veins.wav"
+dest_files=["res://.godot/imported/Icy Veins.wav-de126187410640351dbb4f4ff4b16212.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

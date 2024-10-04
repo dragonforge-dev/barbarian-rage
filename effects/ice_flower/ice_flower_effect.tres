@@ -1,0 +1,96 @@
+[gd_resource type="VisualShader" load_steps=10 format=3 uid="uid://bhkwoy6rbdeot"]
+
+[ext_resource type="Texture2D" uid="uid://dlxrvgkglij6c" path="res://assets/models/effects/flower/flower_file1-file1.png" id="1_hdnk1"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_of73a"]
+texture = ExtResource("1_hdnk1")
+texture_type = 1
+
+[sub_resource type="Gradient" id="Gradient_ox183"]
+colors = PackedColorArray(0, 0.0166669, 1, 1, 0, 0.866667, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gdy8c"]
+gradient = SubResource("Gradient_ox183")
+use_hdr = true
+fill_from = Vector2(0, 1)
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_3rkxv"]
+texture = SubResource("GradientTexture2D_gdy8c")
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_mdobj"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
+op_type = 2
+operator = 2
+
+[sub_resource type="VisualShaderNodeFresnel" id="VisualShaderNodeFresnel_to5h3"]
+default_input_values = [2, false, 3, 0.7]
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_y76yx"]
+parameter_name = "Opacity"
+hint = 1
+default_value_enabled = true
+default_value = 1.0
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_yh3bd"]
+operator = 2
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_lambert, specular_schlick_ggx, unshaded;
+
+uniform sampler2D tex_frg_2 : source_color;
+uniform sampler2D tex_frg_3 : source_color;
+uniform float Opacity : hint_range(0, 1) = 1;
+
+
+
+void fragment() {
+// Texture2D:2
+	vec4 n_out2p0 = texture(tex_frg_2, UV);
+
+
+// Texture2D:3
+	vec4 n_out3p0 = texture(tex_frg_3, UV);
+
+
+// VectorOp:4
+	vec4 n_out4p0 = n_out2p0 * n_out3p0;
+
+
+// FloatParameter:6
+	float n_out6p0 = Opacity;
+
+
+// Fresnel:5
+	float n_in5p3 = 0.70000;
+	float n_out5p0 = pow(1.0 - clamp(dot(NORMAL, VIEW), 0.0, 1.0), n_in5p3);
+
+
+// FloatOp:7
+	float n_out7p0 = n_out6p0 * n_out5p0;
+
+
+// Output:0
+	ALBEDO = vec3(n_out4p0.xyz);
+	ALPHA = n_out7p0;
+
+
+}
+"
+modes/cull = 2
+flags/unshaded = true
+nodes/fragment/0/position = Vector2(760, -160)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_of73a")
+nodes/fragment/2/position = Vector2(-320, -380)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_3rkxv")
+nodes/fragment/3/position = Vector2(-320, -100)
+nodes/fragment/4/node = SubResource("VisualShaderNodeVectorOp_mdobj")
+nodes/fragment/4/position = Vector2(0, -380)
+nodes/fragment/5/node = SubResource("VisualShaderNodeFresnel_to5h3")
+nodes/fragment/5/position = Vector2(60, 260)
+nodes/fragment/6/node = SubResource("VisualShaderNodeFloatParameter_y76yx")
+nodes/fragment/6/position = Vector2(40, -60)
+nodes/fragment/7/node = SubResource("VisualShaderNodeFloatOp_yh3bd")
+nodes/fragment/7/position = Vector2(418.689, 71.2704)
+nodes/fragment/connections = PackedInt32Array(2, 0, 4, 0, 3, 0, 4, 1, 4, 0, 0, 0, 6, 0, 7, 0, 5, 0, 7, 1, 7, 0, 0, 1)

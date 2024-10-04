@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5nu5fv1tcrdv"]
+
+[ext_resource type="PackedScene" uid="uid://d0crhqxjkmpka" path="res://assets/models/items/sword_2handed.gltf" id="1_4g32t"]
+
+[node name="sword_2handed2" instance=ExtResource("1_4g32t")]

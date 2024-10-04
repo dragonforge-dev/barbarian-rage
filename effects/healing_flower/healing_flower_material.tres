@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c8u7ano4y13ak"]
+
+[ext_resource type="Shader" uid="uid://c6pv5liui8xbe" path="res://effects/healing_flower/healing_flower_effect.tres" id="1_qjsnx"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_qjsnx")
+shader_parameter/Opacity = 1.0

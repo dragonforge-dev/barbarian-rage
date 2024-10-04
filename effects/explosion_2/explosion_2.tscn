@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://bim6avp5c8mh5"]
+
+[ext_resource type="Script" path="res://effects/explosion_2/explosion_2.gd" id="1_2y7gx"]
+[ext_resource type="Shader" uid="uid://cpmwtiv7ibpqr" path="res://effects/explosion_2/explosion_2.tres" id="1_qqcyy"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a356i"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_7q6ao"]
+sky_material = SubResource("ProceduralSkyMaterial_a356i")
+
+[sub_resource type="Environment" id="Environment_1dew8"]
+background_mode = 2
+sky = SubResource("Sky_7q6ao")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7msuv"]
+render_priority = 0
+shader = ExtResource("1_qqcyy")
+shader_parameter/Time = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_0xk2f"]
+material = SubResource("ShaderMaterial_7msuv")
+
+[node name="Explosion2" type="Node3D"]
+script = ExtResource("1_2y7gx")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1dew8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_0xk2f")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.88746)

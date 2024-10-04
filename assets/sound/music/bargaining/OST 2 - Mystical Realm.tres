@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Song" load_steps=3 format=3 uid="uid://dglrq48d1j4q7"]
+
+[ext_resource type="Script" path="res://utilities/resource_types/song.gd" id="1_skap2"]
+[ext_resource type="AudioStream" uid="uid://6hpme640wqi7" path="res://assets/sound/music/bargaining/OST 2 - Mystical Realm (Loopable).ogg" id="2_wflx1"]
+
+[resource]
+script = ExtResource("1_skap2")
+song = ExtResource("2_wflx1")
+title = "Mystical Realm"
+artist = "ELVGames & PEGGU-SENSEI"
+album = "Atmospheric Fantasy Music 1"
+album_link = "https://elvgames.itch.io/atmospheric-fantasy-music-1"

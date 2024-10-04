@@ -1,0 +1,43 @@
+[gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://b2qvnaot4e4jj"]
+
+[ext_resource type="Texture2D" uid="uid://demuiac4htvqn" path="res://assets/textures/shader/ice001/Ice001_1K-PNG_Color.png" id="1_kwyms"]
+[ext_resource type="Texture2D" uid="uid://daec064trq2ll" path="res://assets/textures/shader/ice001/Ice001_1K-PNG_Roughness.png" id="2_1ku2j"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_kq2ed"]
+texture = ExtResource("1_kwyms")
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_qu403"]
+texture = ExtResource("2_1ku2j")
+texture_type = 1
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D tex_frg_2 : source_color;
+uniform sampler2D tex_frg_3 : source_color;
+
+
+
+void fragment() {
+// Texture2D:2
+	vec4 n_out2p0 = texture(tex_frg_2, UV);
+
+
+// Texture2D:3
+	vec4 n_out3p0 = texture(tex_frg_3, UV);
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+	ROUGHNESS = n_out3p0.x;
+
+
+}
+"
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_kq2ed")
+nodes/fragment/2/position = Vector2(-240, 0)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_qu403")
+nodes/fragment/3/position = Vector2(-240, 260)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 0, 3)

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dkui4ghaytx31"
+path="res://.godot/imported/Horror Vol5 Phobia Main.ogg-ca6a65d9d3cff86787c67bc4c66f6254.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sound/music/depression/Horror Vol5 Phobia Main.ogg"
+dest_files=["res://.godot/imported/Horror Vol5 Phobia Main.ogg-ca6a65d9d3cff86787c67bc4c66f6254.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

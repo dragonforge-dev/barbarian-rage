@@ -1,0 +1,70 @@
+[gd_scene load_steps=12 format=3 uid="uid://bbsaco7nwh10d"]
+
+[ext_resource type="PackedScene" uid="uid://cce67ik61t2jy" path="res://assets/models/items/sword_2handed_color.gltf" id="1_1erul"]
+[ext_resource type="Material" uid="uid://duub1srk5q8y" path="res://assets/materials/ice_001.material" id="2_1tde0"]
+[ext_resource type="Script" path="res://environment/weapons/ice_sword.gd" id="2_cvmau"]
+[ext_resource type="Material" uid="uid://byrnlvgtm348i" path="res://effects/ice_sword/weapon_ice.material" id="3_632lo"]
+[ext_resource type="Texture2D" uid="uid://l1agka5pg1xh" path="res://assets/textures/particles/smoke_03.png" id="4_6hd22"]
+
+[sub_resource type="Curve" id="Curve_nes30"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.512, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ygcm6"]
+texture_mode = 1
+curve = SubResource("Curve_nes30")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o0b0m"]
+lifetime_randomness = 0.5
+emission_shape_scale = Vector3(0.1, 0.6, 0.1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 0, 0)
+spread = 0.0
+scale_min = 0.2
+scale_max = 0.4
+alpha_curve = SubResource("CurveTexture_ygcm6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ienq8"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+albedo_texture = ExtResource("4_6hd22")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_4qobl"]
+material = SubResource("StandardMaterial3D_ienq8")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0g2u5"]
+size = Vector3(0.3, 1.3, 0.1)
+
+[node name="IceSword" instance=ExtResource("1_1erul")]
+script = ExtResource("2_cvmau")
+
+[node name="sword_2handed_color" parent="." index="0"]
+material_override = ExtResource("2_1tde0")
+material_overlay = ExtResource("3_632lo")
+
+[node name="Snow" type="GPUParticles3D" parent="sword_2handed_color" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+amount = 5
+lifetime = 0.75
+speed_scale = 0.4
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_o0b0m")
+draw_pass_1 = SubResource("QuadMesh_4qobl")
+
+[node name="Blade" type="Area3D" parent="sword_2handed_color" index="1"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="sword_2handed_color/Blade" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
+shape = SubResource("BoxShape3D_0g2u5")
+disabled = true
+
+[connection signal="body_entered" from="sword_2handed_color/Blade" to="." method="_on_blade_body_entered"]

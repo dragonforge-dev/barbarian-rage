@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bx0q74vyf8u6u"
+path="res://.godot/imported/OST 2 - A Place in My Heart (Loopable).ogg-e9f006693f323ffab0255acc8e93b50b.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sound/music/bargaining/OST 2 - A Place in My Heart (Loopable).ogg"
+dest_files=["res://.godot/imported/OST 2 - A Place in My Heart (Loopable).ogg-e9f006693f323ffab0255acc8e93b50b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

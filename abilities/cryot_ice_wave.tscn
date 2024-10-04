@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://bq2bk7c1nygs0"]
+
+[ext_resource type="Script" path="res://abilities/cryot_ice_wave.gd" id="1_6q3jm"]
+[ext_resource type="AudioStream" uid="uid://bgj2idk5c7xyh" path="res://assets/sound/sfx/ice_flower/Icy Veins.wav" id="2_535se"]
+[ext_resource type="PackedScene" uid="uid://b7jqdvpwg1h06" path="res://effects/ice_flower/ice_flower_effect.tscn" id="4_c34mk"]
+
+[node name="CryotIceWave" type="Area3D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_6q3jm")
+collision_sound = ExtResource("2_535se")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+
+[node name="EffectTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="MeltTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="IceFlowerEffect" parent="." instance=ExtResource("4_c34mk")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="EffectTimer" to="." method="_on_effect_timer_timeout"]
+[connection signal="timeout" from="MeltTimer" to="." method="_on_melt_timer_timeout"]

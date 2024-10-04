@@ -1,0 +1,371 @@
+[gd_scene load_steps=24 format=4 uid="uid://b7jqdvpwg1h06"]
+
+[ext_resource type="Script" path="res://effects/ice_flower/ice_flower_effect.gd" id="1_5ukm1"]
+[ext_resource type="Material" uid="uid://r078mr4m4bnc" path="res://assets/materials/ice_103.material" id="2_jl0lc"]
+[ext_resource type="Shader" uid="uid://lhko880j7nqj" path="res://effects/ice_flower/ice_circle_effect.tres" id="3_a6dbh"]
+[ext_resource type="ArrayMesh" uid="uid://oashr1vs1ilc" path="res://assets/models/effects/flower/circle_mesh.obj" id="4_vpk1n"]
+[ext_resource type="Material" uid="uid://duhfr50wabrrh" path="res://effects/ice_flower/ice_flower.material" id="5_b1hmk"]
+[ext_resource type="Shader" uid="uid://dck5rx0lm5vqj" path="res://effects/ice_flower/snow_fall_effect.tres" id="5_bqcfq"]
+[ext_resource type="Texture2D" uid="uid://l1agka5pg1xh" path="res://assets/textures/particles/smoke_03.png" id="6_6h2nb"]
+[ext_resource type="Texture2D" uid="uid://dr278dm83rtbj" path="res://assets/textures/particles/smoke_04.png" id="7_jsm4q"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_f8ljs"]
+resource_name = "flower_Mesh_003"
+_blend_shape_names = PackedStringArray("Shrinkwrap", "Dissipate")
+_surfaces = [{
+"aabb": AABB(-1.98992, -0.00228955, -3.12134, 4.62702, 2.16223, 5.81689),
+"attribute_data": PackedByteArray("wGPOPA4cdz8AAAA/AACAP361VD9+tVQ/AAAAAAAAAD8AAAA/AAAAPwAAgD8AAAA/CiotPggqLT4AAAA/AAAAAAAAgD8AAAAAwGPOPA4cdz8AAAA/AACAP361VD9+tVQ/AAAAAAAAAD8AAAA/AAAAPwAAgD8AAAA/CiotPggqLT4AAAA/AAAAAAAAgD8AAAAAwGPOPA4cdz8AAAA/AACAP361VD9+tVQ/AAAAAAAAAD8AAAA/AAAAPwAAgD8AAAA/CiotPggqLT4AAAA/AAAAAAAAgD8AAAAAwGPOPA4cdz8AAAA/AACAP361VD9+tVQ/AAAAAAAAAD8AAAA/AAAAPwAAgD8AAAA/CiotPggqLT4AAAA/AAAAAAAAgD8AAAAAwGPOPA4cdz8AAAA/AACAP361VD9+tVQ/AAAAAAAAAD8AAAA/AAAAPwAAgD8AAAA/CiotPggqLT4AAAA/AAAAAAAAgD8AAAAAwGPOPA4cdz8AAAA/AACAP361VD9+tVQ/AAAAAAAAAD8AAAA/AAAAPwAAgD8AAAA/CiotPggqLT4AAAA/AAAAAAAAgD8AAAAAwGPOPA4cdz8AAAA/AACAP361VD9+tVQ/AAAAAAAAAD8AAAA/AAAAPwAAgD8AAAA/CiotPggqLT4AAAA/AAAAAAAAgD8AAAAAwGPOPA4cdz8AAAA/AACAP361VD9+tVQ/AAAAAAAAAD8AAAA/AAAAPwAAgD8AAAA/CiotPggqLT4AAAA/AAAAAAAAgD8AAAAAwGPOPA4cdz8AAAA/AACAP361VD9+tVQ/AAAAAAAAAD8AAAA/AAAAPwAAgD8AAAA/CiotPggqLT4AAAA/AAAAAAAAgD8AAAAAwGPOPA4cdz8AAAA/AACAP361VD9+tVQ/AAAAAAAAAD8AAAA/AAAAPwAAgD8AAAA/CiotPggqLT4AAAA/AAAAAAAAgD8AAAAA"),
+"blend_shapes": PackedByteArray("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"),
+"format": 34359742487,
+"index_count": 240,
+"index_data": PackedByteArray("AAAEAAEAAAADAAQAAQAEAAUAAQAFAAIABAAIAAUABAAHAAgAAwAHAAQAAwAGAAcACQANAAoACQAMAA0ACgANAA4ACgAOAAsADQARAA4ADQAQABEADAAQAA0ADAAPABAAEgAWABMAEgAVABYAEwAWABcAEwAXABQAFgAaABcAFgAZABoAFQAZABYAFQAYABkAGwAfABwAGwAeAB8AHAAfACAAHAAgAB0AHwAjACAAHwAiACMAHgAiAB8AHgAhACIAJAAoACUAJAAnACgAJQAoACkAJQApACYAKAAsACkAKAArACwAJwArACgAJwAqACsALQAxAC4ALQAwADEALgAxADIALgAyAC8AMQA1ADIAMQA0ADUAMAA0ADEAMAAzADQANgA6ADcANgA5ADoANwA6ADsANwA7ADgAOgA+ADsAOgA9AD4AOQA9ADoAOQA8AD0APwBDAEAAPwBCAEMAQABDAEQAQABEAEEAQwBHAEQAQwBGAEcAQgBGAEMAQgBFAEYASABMAEkASABLAEwASQBMAE0ASQBNAEoATABQAE0ATABPAFAASwBPAEwASwBOAE8AUQBVAFIAUQBUAFUAUgBVAFYAUgBWAFMAVQBZAFYAVQBYAFkAVABYAFUAVABXAFgA"),
+"material": ExtResource("5_b1hmk"),
+"name": "lambert2",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 90,
+"vertex_data": PackedByteArray("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")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oiici"]
+render_priority = 0
+shader = ExtResource("3_a6dbh")
+shader_parameter/CircleColor = Color(0, 0.866667, 1, 1)
+shader_parameter/Opacity = 0.0
+shader_parameter/ExtraOpacity = 0.4
+shader_parameter/Speed = Vector2(0, -1.2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dddov"]
+render_priority = 0
+shader = ExtResource("5_bqcfq")
+shader_parameter/MainTexture = ExtResource("6_6h2nb")
+
+[sub_resource type="Curve" id="Curve_vt1ns"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.512, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_mc0wa"]
+texture_mode = 1
+curve = SubResource("Curve_vt1ns")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_isx6u"]
+lifetime_randomness = 0.5
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.0
+emission_ring_radius = 4.0
+emission_ring_inner_radius = 0.0
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+alpha_curve = SubResource("CurveTexture_mc0wa")
+
+[sub_resource type="QuadMesh" id="QuadMesh_awu5w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0srcy"]
+render_priority = 0
+shader = ExtResource("5_bqcfq")
+shader_parameter/MainTexture = ExtResource("7_jsm4q")
+
+[sub_resource type="Curve" id="Curve_nes30"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.512, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ygcm6"]
+texture_mode = 1
+curve = SubResource("Curve_nes30")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ovde2"]
+lifetime_randomness = 0.5
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.0
+emission_ring_radius = 4.0
+emission_ring_inner_radius = 0.0
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 0.5
+initial_velocity_max = 1.5
+gravity = Vector3(0, 0, 0)
+scale_min = 0.3
+scale_max = 0.5
+alpha_curve = SubResource("CurveTexture_ygcm6")
+
+[sub_resource type="Animation" id="Animation_tx86x"]
+resource_name = "Blossom"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlowerMesh:blend_shapes/Shrinkwrap")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlowerMesh:mesh:surface_0/material:shader_parameter/Opacity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CircleMesh:material_override:shader_parameter/Opacity")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.233333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FlowerMesh:blend_shapes/Dissipate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_open_sound_loop"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Snow:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Snow2:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_ly5ws"]
+resource_name = "Dissipate"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlowerMesh:mesh:surface_0/material:shader_parameter/Opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CircleMesh:material_override:shader_parameter/Opacity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlowerMesh:blend_shapes/Dissipate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Snow:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.03),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Snow2:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.03),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_jynns"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlowerMesh:blend_shapes/Shrinkwrap")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlowerMesh:mesh:surface_0/material:shader_parameter/Opacity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CircleMesh:material_override:shader_parameter/Opacity")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FlowerMesh:blend_shapes/Dissipate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Snow:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Snow2:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uk4tj"]
+_data = {
+"Blossom": SubResource("Animation_tx86x"),
+"Dissipate": SubResource("Animation_ly5ws"),
+"RESET": SubResource("Animation_jynns")
+}
+
+[node name="IceFlowerEffect" type="Node3D"]
+script = ExtResource("1_5ukm1")
+
+[node name="FlowerMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+material_overlay = ExtResource("2_jl0lc")
+mesh = SubResource("ArrayMesh_f8ljs")
+blend_shapes/Dissipate = 0.0
+blend_shapes/Shrinkwrap = 1.0
+
+[node name="CircleMesh" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_oiici")
+mesh = ExtResource("4_vpk1n")
+
+[node name="Snow" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+material_override = SubResource("ShaderMaterial_dddov")
+emitting = false
+amount = 40
+lifetime = 3.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_isx6u")
+draw_pass_1 = SubResource("QuadMesh_awu5w")
+
+[node name="Snow2" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+material_override = SubResource("ShaderMaterial_0srcy")
+emitting = false
+amount = 10
+lifetime = 3.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ovde2")
+draw_pass_1 = SubResource("QuadMesh_awu5w")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uk4tj")
+}
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]

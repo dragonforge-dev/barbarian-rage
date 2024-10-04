@@ -1,0 +1,51 @@
+[gd_resource type="VisualShader" load_steps=7 format=3 uid="uid://dalyi8wnxmmpa"]
+
+[sub_resource type="Gradient" id="Gradient_xqjgm"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g0q0x"]
+gradient = SubResource("Gradient_xqjgm")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_jonco"]
+texture = SubResource("GradientTexture2D_g0q0x")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3wpws"]
+noise_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bas3e"]
+noise = SubResource("FastNoiseLite_3wpws")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_q4h3o"]
+texture = SubResource("NoiseTexture2D_bas3e")
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D tex_frg_3;
+uniform sampler2D tex_frg_4;
+
+
+
+void fragment() {
+// Texture2D:3
+	vec4 n_out3p0 = texture(tex_frg_3, UV);
+
+
+// Texture2D:4
+	vec4 n_out4p0 = texture(tex_frg_4, vec2(n_out3p0.xy));
+
+
+// Output:0
+	ALBEDO = vec3(n_out4p0.xyz);
+	ALPHA = n_out4p0.x;
+
+
+}
+"
+modes/cull = 2
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_jonco")
+nodes/fragment/3/position = Vector2(-420, 140)
+nodes/fragment/4/node = SubResource("VisualShaderNodeTexture_q4h3o")
+nodes/fragment/4/position = Vector2(-120, 140)
+nodes/fragment/connections = PackedInt32Array(3, 0, 4, 0, 4, 0, 0, 0, 4, 0, 0, 1)

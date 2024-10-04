@@ -1,0 +1,35 @@
+[gd_scene load_steps=9 format=3 uid="uid://duy3h18mwoyuw"]
+
+[ext_resource type="Script" path="res://abilities/cryot_ice_bomb.gd" id="1_t3p26"]
+[ext_resource type="AudioStream" uid="uid://c50mskat5klk" path="res://assets/sound/sfx/ice_bomb/Ice Strike Cast 001.wav" id="2_igw1l"]
+[ext_resource type="AudioStream" uid="uid://bffuc1fqc2os1" path="res://assets/sound/sfx/ice_bomb/Snow Ball Impact A.wav" id="3_anxx7"]
+[ext_resource type="AudioStream" uid="uid://dgjpju2o216a5" path="res://assets/sound/sfx/ice_bomb/Frost Nova.wav" id="3_ksobr"]
+[ext_resource type="AudioStream" uid="uid://ecpbo8tko35p" path="res://assets/sound/sfx/ice_bomb/Snow Ball Impact B.wav" id="4_3ouh4"]
+[ext_resource type="AudioStream" uid="uid://82e13pj6d8gh" path="res://assets/sound/sfx/ice_bomb/Snow Ball Impact C.wav" id="5_nb5je"]
+[ext_resource type="PackedScene" uid="uid://csrtdcjkhfg5r" path="res://effects/ice_orb/ice_orb.tscn" id="6_naa0o"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jy00c"]
+radius = 1.0
+
+[node name="CryotIceBomb" type="Area3D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_t3p26")
+activation_sound = ExtResource("2_igw1l")
+explosion_sound = ExtResource("3_ksobr")
+collision_sounds = Array[AudioStream]([ExtResource("3_anxx7"), ExtResource("4_3ouh4"), ExtResource("5_nb5je")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2, 0)
+shape = SubResource("SphereShape3D_jy00c")
+
+[node name="DelayTimer" type="Timer" parent="."]
+
+[node name="ExplosionTimer" type="Timer" parent="."]
+
+[node name="IceOrb" parent="." instance=ExtResource("6_naa0o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2, 0)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="DelayTimer" to="." method="_on_delay_timer_timeout"]
+[connection signal="timeout" from="ExplosionTimer" to="." method="_on_explosion_timer_timeout"]

@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://dmc8jctfyg32v"]
+
+[ext_resource type="Texture2D" uid="uid://1b2idobfhaf5" path="res://assets/ui/notification.png" id="1_i4h58"]
+[ext_resource type="FontFile" uid="uid://b4rmw518p4g8u" path="res://assets/ui/fonts/IMMORTAL.ttf" id="1_xiuem"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ylnnm"]
+texture = ExtResource("1_i4h58")
+axis_stretch_vertical = 1
+
+[resource]
+default_font = ExtResource("1_xiuem")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/fonts/font = ExtResource("1_xiuem")
+TabContainer/styles/panel = SubResource("StyleBoxTexture_ylnnm")
+TabContainer/styles/tabbar_background = SubResource("StyleBoxTexture_ylnnm")

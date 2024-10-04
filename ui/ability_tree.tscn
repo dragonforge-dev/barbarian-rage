@@ -1,0 +1,641 @@
+[gd_scene load_steps=21 format=3 uid="uid://dep6wvqsaetpq"]
+
+[ext_resource type="Theme" uid="uid://dmc8jctfyg32v" path="res://assets/ui/themes/otworld_theme.tres" id="1_4n8hb"]
+[ext_resource type="Script" path="res://ui/ability_tree.gd" id="1_k8q37"]
+[ext_resource type="Texture2D" uid="uid://1b2idobfhaf5" path="res://assets/ui/notification.png" id="1_l4ai2"]
+[ext_resource type="Resource" uid="uid://l8rrtwkbws7b" path="res://assets/sound/music/ability_screen/OST 4 - Memories.tres" id="2_e0w1i"]
+[ext_resource type="AudioStream" uid="uid://rn84gq7iqxr0" path="res://assets/sound/sfx/ui/ui_page_flipping_01.wav" id="3_7tu5d"]
+[ext_resource type="Theme" uid="uid://lmwtlmbhtkn8" path="res://assets/ui/themes/otworld_papyrus_theme.tres" id="3_56e7v"]
+[ext_resource type="Texture2D" uid="uid://64426qyorky3" path="res://assets/ui/icons/128/T_FortressSide_Hi_Def_Icons_Pack2 (108).png" id="3_wmol4"]
+[ext_resource type="Texture2D" uid="uid://b1amnnccuwnw8" path="res://assets/ui/icons/128/T_FortressSide_Hi_Def_Icons_Pack2 (128).png" id="4_4jqt7"]
+[ext_resource type="AudioStream" uid="uid://dsgto1sxsdr3y" path="res://assets/sound/sfx/ui/ui_purchase_01.wav" id="4_hqwj1"]
+[ext_resource type="AudioStream" uid="uid://dyvo4e770fc26" path="res://assets/sound/sfx/ui/UI2_Button_1.wav" id="5_1baqq"]
+[ext_resource type="Texture2D" uid="uid://df71nrqeni17v" path="res://assets/ui/icons/128/FortressSide_Icons_Pack10_ (398).png" id="5_2wmw5"]
+[ext_resource type="StyleBox" uid="uid://brs3ma2gsrch4" path="res://assets/ui/themes/brown_border_style_box_flat.tres" id="5_mj5q4"]
+[ext_resource type="Texture2D" uid="uid://cwfi27eqhrt68" path="res://assets/ui/icons/128/T_FortressSide_Hi_Def_Icons_Pack2 (136).png" id="6_r3fwn"]
+[ext_resource type="Texture2D" uid="uid://w4xfsy2jusur" path="res://assets/ui/icons/128/T_FortressSide_Hi_Def_Icons_Pack2 (111).png" id="7_f04gl"]
+[ext_resource type="Script" path="res://ui/action_button.gd" id="7_xo81t"]
+[ext_resource type="Texture2D" uid="uid://fkgyxorkcria" path="res://assets/ui/icons/128/T_FortressSide_Hi_Def_Icons_Pack2 (153).png" id="8_vge1c"]
+[ext_resource type="Texture2D" uid="uid://cjh1kv0bn6w4d" path="res://assets/ui/icons/128/T_FortressSide_Hi_Def_Icons_Pack2 (283).png" id="9_5jj88"]
+[ext_resource type="Texture2D" uid="uid://bfryrel6xn7l2" path="res://assets/ui/icons/128/T_FortressSide_Hi_Def_Icons_Pack2 (160).png" id="10_p2nyd"]
+[ext_resource type="Texture2D" uid="uid://gxj7pxu3xrhv" path="res://assets/ui/icons/128/FortressSide_Icons_Pack10_ (452).png" id="11_6gd42"]
+[ext_resource type="Texture2D" uid="uid://bve1mhb8xa88u" path="res://assets/ui/icons/128/T_FortressSide_Hi_Def_Icons_Pack2 (163).png" id="12_414p3"]
+
+[node name="AbilityTree" type="CanvasLayer" node_paths=PackedStringArray("quant_labels")]
+script = ExtResource("1_k8q37")
+quant_labels = [NodePath("MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VSplitContainer/MarginContainer/HSplitContainer/VBoxContainer7/Peaks"), NodePath("MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VSplitContainer/MarginContainer/HSplitContainer/VBoxContainer7/Nahn"), NodePath("MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VSplitContainer/MarginContainer/HSplitContainer/VBoxContainer7/Cron"), NodePath("MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VSplitContainer/MarginContainer/HSplitContainer/VBoxContainer7/Mils"), NodePath("MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VSplitContainer/MarginContainer/HSplitContainer/VBoxContainer7/Quant")]
+ability_screen_music = ExtResource("2_e0w1i")
+page_flip_sounds = Array[AudioStream]([ExtResource("3_7tu5d")])
+purchase_sound = ExtResource("4_hqwj1")
+click_sound = ExtResource("5_1baqq")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_4n8hb")
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+custom_minimum_size = Vector2(900, 600)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_l4ai2")
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer/TextureRect/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_56e7v")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 25
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VSplitContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="VBoxContainer6" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VSplitContainer/MarginContainer/HSplitContainer"]
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VSplitContainer/MarginContainer/HSplitContainer/VBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Peaks:"
+
+[node name="Label2" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VSplitContainer/MarginContainer/HSplitContainer/VBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Nahn:"
+
+[node name="Label3" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VSplitContainer/MarginContainer/HSplitContainer/VBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Cron:"
+
+[node name="Label4" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VSplitContainer/MarginContainer/HSplitContainer/VBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Mils:"
+
+[node name="Label5" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VSplitContainer/MarginContainer/HSplitContainer/VBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Quant:"
+
+[node name="VBoxContainer7" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VSplitContainer/MarginContainer/HSplitContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Peaks" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VSplitContainer/MarginContainer/HSplitContainer/VBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "1000"
+
+[node name="Nahn" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VSplitContainer/MarginContainer/HSplitContainer/VBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "1000"
+
+[node name="Cron" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VSplitContainer/MarginContainer/HSplitContainer/VBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "1000"
+
+[node name="Mils" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VSplitContainer/MarginContainer/HSplitContainer/VBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "1000"
+
+[node name="Quant" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VSplitContainer/MarginContainer/HSplitContainer/VBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "1000"
+
+[node name="Placeholder" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VSplitContainer/MarginContainer/HSplitContainer/VBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+text = "1000"
+
+[node name="ShortDescriptionMarginContainer" type="MarginContainer" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VSplitContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 5
+
+[node name="Panel" type="Panel" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VSplitContainer/ShortDescriptionMarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("5_mj5q4")
+
+[node name="ShortDescriptionLabel" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VSplitContainer/ShortDescriptionMarginContainer/Panel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(135, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press ESC to pick a new level."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ContinueButton" type="Button" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VSplitContainer/ShortDescriptionMarginContainer/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -47.0
+offset_right = 35.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "Continue"
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Denial" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.337255, 0.168627, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Denial"
+horizontal_alignment = 1
+
+[node name="TimeDenial" type="Button" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Time Denial"
+icon = ExtResource("3_wmol4")
+icon_alignment = 1
+vertical_icon_alignment = 0
+script = ExtResource("7_xo81t")
+cost_in_peaks = Array[int]([5, 50, 500, 5000, 50000, 500000, 5000000, 50000000, 500000000, 5000000000])
+short_description = "12.5% increase to depression timer length per level."
+long_description = "This ability pushes off depression a little longer, resulting in an increase in the amount of time you can spend in a room.
+
+Denial helps us to survive loss. In this stage, the world becomes meaningless and overwhelming. Life makes no sense. We are in a state of shock and denial. We go numb. We wonder how we can go on, if we can go on, why we should go on."
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer4/TimeDenial"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 45
+
+[node name="Level" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer4/TimeDenial/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 8
+text = "0"
+horizontal_alignment = 2
+
+[node name="IceShard" type="Button" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Ice Shard"
+icon = ExtResource("4_4jqt7")
+icon_alignment = 1
+vertical_icon_alignment = 0
+script = ExtResource("7_xo81t")
+cost_in_peaks = Array[int]([50, 500, 5000, 50000, 500000])
+short_description = "Shoot 1 ice shard per level. Damage increases every level."
+long_description = "You shoot freezing shards of ice so you don't have to feel your pain.
+
+Denial is nature’s way of letting in only as much as we can handle. As you accept the reality of the loss and start to ask yourself questions, you are unknowingly beginning the healing process. You are becoming stronger, and the denial is beginning to fade. But as you proceed, all the feelings you were denying begin to surface."
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer4/IceShard"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 45
+
+[node name="Level" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer4/IceShard/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 8
+text = "0"
+horizontal_alignment = 2
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Anger" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer5"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.337255, 0.168627, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Anger"
+horizontal_alignment = 1
+
+[node name="RemorhazSpeed" type="Button" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Remorhaz Speed"
+icon = ExtResource("5_2wmw5")
+icon_alignment = 1
+vertical_icon_alignment = 0
+script = ExtResource("7_xo81t")
+cost_in_peaks = Array[int]([2, 20, 200, 2000, 20000, 200000, 2000000, 20000000, 200000000, 2000000000])
+short_description = "Increase speed 10% per level."
+long_description = "The Remorhaz is an ice worm famed for its lightning speed when angered.
+
+Anger is a necessary stage of the healing process. Be willing to feel your anger, even though it may seem endless. The more you truly feel it, the more it will begin to dissipate and the more you will heal. There are many other emotions under the anger, but anger is the emotion we feel most powerfully. The truth is that anger has no limits."
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer5/RemorhazSpeed"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 45
+
+[node name="Level" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer5/RemorhazSpeed/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 8
+text = "0"
+horizontal_alignment = 2
+
+[node name="Destruction" type="Button" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Destruction"
+icon = ExtResource("6_r3fwn")
+icon_alignment = 1
+vertical_icon_alignment = 0
+script = ExtResource("7_xo81t")
+cost_in_peaks = Array[int]([20, 200, 20000, 200000, 20000000])
+short_description = "Your melee damage doubles every level."
+long_description = "As you release your anger, you become more skilled at channeling it.
+
+Underneath anger is pain - your pain. It is natural to feel deserted and abandoned. Anger is strength and it can be an anchor, giving temporary structure to the nothingness of loss. A connection made from the strength of anger feels better than nothing. The anger is just another indication of the intensity of your love."
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer5/Destruction"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 45
+
+[node name="Level" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer5/Destruction/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 8
+text = "0"
+horizontal_alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Bargaining" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.337255, 0.168627, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Bargaining"
+horizontal_alignment = 1
+
+[node name="QuantCondenser" type="Button" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Quant Condenser
+"
+icon = ExtResource("7_f04gl")
+icon_alignment = 1
+vertical_icon_alignment = 0
+script = ExtResource("7_xo81t")
+cost_in_peaks = Array[int]([10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000, 10000000000])
+short_description = "Peaks you gain are worth 10x as much per level."
+long_description = "Your bargaining with death emotionally charges the power of the quant you collect.
+
+We want life returned to what is was; we want our loved ones restored. We want to go back in time: stop their death from happening … if only, if only, if only. Guilt is often bargaining’s companion. The “if onlys” cause us to find fault in ourselves and what we think we could have done differently."
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer/QuantCondenser"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 45
+
+[node name="Level" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer/QuantCondenser/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 8
+text = "0"
+horizontal_alignment = 2
+
+[node name="IceWave" type="Button" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Ice Flower
+"
+icon = ExtResource("8_vge1c")
+icon_alignment = 1
+vertical_icon_alignment = 0
+script = ExtResource("7_xo81t")
+cost_in_peaks = Array[int]([100, 2000, 40000, 800000, 16000000])
+short_description = "Damage increases 1.5x per level.
+Range increases 0.5 meters per level."
+long_description = "You have bargained with your pain to unleash it in waves to damage what's around you.
+
+We may even bargain with the pain. We will do anything not to feel the pain of this loss. We remain in the past, trying to negotiate our way out of the hurt. People forget that the stages are responses to feelings as we flip in and out of one and then another. We may feel a feeling in one stage, then another and back again to the first one."
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer/IceWave"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 45
+
+[node name="Level" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer/IceWave/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 8
+text = "0"
+horizontal_alignment = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Depression" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.337255, 0.168627, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Depression"
+horizontal_alignment = 1
+
+[node name="BlackHole" type="Button" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Black Hole"
+icon = ExtResource("9_5jj88")
+icon_alignment = 1
+vertical_icon_alignment = 0
+script = ExtResource("7_xo81t")
+cost_in_peaks = Array[int]([1, 10, 1000, 10000, 100000, 1000000, 1000000, 10000000, 100000000, 1000000000])
+short_description = "Range increases 5 meters per level."
+long_description = "The black hole of your despair calls to the quant around you sucking it directly to you.
+
+Empty feelings present themselves, and grief enters our lives on a deeper level, deeper than we ever imagined. This depressive stage feels as though it will last forever. It’s important to understand that this depression is not a sign of mental illness. It is the appropriate response to a great loss. Why go on at all? "
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer2/BlackHole"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 45
+
+[node name="Level" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer2/BlackHole/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 8
+text = "0"
+horizontal_alignment = 2
+
+[node name="IceBomb" type="Button" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Ice Bomb"
+icon = ExtResource("10_p2nyd")
+icon_alignment = 1
+vertical_icon_alignment = 0
+script = ExtResource("7_xo81t")
+cost_in_peaks = Array[int]([1, 100, 10000, 1000000, 100000000])
+short_description = "Damage increases 20% per level.
+Delay is reduced by 25% per level."
+long_description = "You coalesce your depression and explode it as an icy bomb of despair
+
+We withdraw from life, left in a fog of intense sadness, wondering, perhaps, if there is any point in going on alone? The loss of a loved one is a very depressing situation, and depression is a normal and appropriate response. When a loss fully settles in your soul, it is understandably depressing. Grief is a process of healing. Depression is necessary."
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer2/IceBomb"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 45
+
+[node name="Level" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer2/IceBomb/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 8
+text = "0"
+horizontal_alignment = 2
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Acceptance" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.337255, 0.168627, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Acceptance"
+horizontal_alignment = 1
+
+[node name="IceSword" type="Button" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Ice Sword"
+icon = ExtResource("11_6gd42")
+icon_alignment = 1
+vertical_icon_alignment = 0
+script = ExtResource("7_xo81t")
+cost_in_peaks = Array[int]([1000000000000])
+short_description = "You can create a two-handed blade made of ice harder than steel."
+long_description = "You gain the sword of icy resolve as you learn to accept death and move forwards.
+
+Acceptance is often confused with the notion of being “OK” with what has happened. This is not the case. Most people don’t ever feel OK about the loss of a loved one. This stage is about accepting the reality that our loved ones are physically gone and this new reality is the permanent reality. We learn to live with it."
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer3/IceSword"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 45
+
+[node name="Level" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer3/IceSword/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 8
+text = "0"
+horizontal_alignment = 2
+
+[node name="IceArmor" type="Button" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Ice Armor"
+icon = ExtResource("12_414p3")
+icon_alignment = 1
+vertical_icon_alignment = 0
+script = ExtResource("7_xo81t")
+cost_in_peaks = Array[int]([2000000000000])
+short_description = "You can turn your icy calm into literal armor made of ice."
+long_description = "You enter a chill, meditative state of emotionlessness in combat that manifests as armor.
+
+The past has been forever changed and we must readjust. Finding acceptance may be just having more good days than bad. We start to listen to our needs; we change, we grow, we evolve. We invest in our friendships and in our relationship with ourselves. We begin to live again, but we cannot do so until we have given grief its time."
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer3/IceArmor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 45
+
+[node name="Level" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VBoxContainer3/IceArmor/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 8
+text = "0"
+horizontal_alignment = 2
+
+[node name="DescriptionMarginContainer" type="MarginContainer" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("3_56e7v")
+theme_override_constants/margin_left = 20
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/DescriptionMarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/DescriptionMarginContainer/HSplitContainer"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+
+[node name="AbilityNameLabel" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/DescriptionMarginContainer/HSplitContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Quant Condenser"
+autowrap_mode = 2
+
+[node name="AbilityHSeparator" type="HSeparator" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/DescriptionMarginContainer/HSplitContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="AbilityCostLabel" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/DescriptionMarginContainer/HSplitContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "999 Peaks"
+
+[node name="Panel" type="Panel" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/DescriptionMarginContainer/HSplitContainer"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("5_mj5q4")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/DescriptionMarginContainer/HSplitContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VSplitContainer/DescriptionMarginContainer/HSplitContainer/Panel/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(698, 153)
+layout_mode = 2
+size_flags_vertical = 1
+text = "You gain the sword of icy resolve as you learn to accept death and move forwards.
+
+Acceptance is often confused with the notion of being “OK” with what has happened. This is not the case. Most people don’t ever feel OK about the loss of a loved one. This stage is about accepting the reality that our loved ones are physically gone and this new reality is the permanent reality. We learn to live with it."
+autowrap_mode = 2
+clip_text = true
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="MarginContainer/TextureRect/MarginContainer/VSplitContainer/HBoxContainer/VSplitContainer/ShortDescriptionMarginContainer/Panel/ContinueButton" to="." method="_on_continue_button_pressed"]

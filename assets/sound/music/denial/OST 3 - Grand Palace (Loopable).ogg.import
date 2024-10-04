@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://i60nf3b2c2ey"
+path="res://.godot/imported/OST 3 - Grand Palace (Loopable).ogg-f0443a197f60b90c041c6872a78d496e.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sound/music/denial/OST 3 - Grand Palace (Loopable).ogg"
+dest_files=["res://.godot/imported/OST 3 - Grand Palace (Loopable).ogg-f0443a197f60b90c041c6872a78d496e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddp75p1flqcjj"]
+
+[ext_resource type="Script" path="res://ui/hud_passive_ability.gd" id="1_1wmk0"]
+[ext_resource type="Texture2D" uid="uid://dt8wtcu3biu0b" path="res://assets/ui/white_circle_64x64.png" id="2_wokoj"]
+
+[node name="HUDPassiveAbility" type="Control" groups=["hud_ability"]]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 64.0
+offset_bottom = 64.0
+size_flags_horizontal = 4
+script = ExtResource("1_1wmk0")
+
+[node name="Mask" type="Sprite2D" parent="."]
+texture = ExtResource("2_wokoj")
+centered = false
+
+[node name="AbilityIcon" type="Sprite2D" parent="Mask"]
+centered = false
+
+[node name="LevelLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 46.0
+offset_right = 64.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 18
+text = "0"

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ba32gh4f7o4xq"
+path="res://.godot/imported/OST 2 - Battlefield (Loopable).ogg-4c173a962e7cf0f600ef5612e5fc8b3e.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sound/music/depression/OST 2 - Battlefield (Loopable).ogg"
+dest_files=["res://.godot/imported/OST 2 - Battlefield (Loopable).ogg-4c173a962e7cf0f600ef5612e5fc8b3e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

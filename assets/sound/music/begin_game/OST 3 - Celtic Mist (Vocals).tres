@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Song" load_steps=3 format=3 uid="uid://1q6j7h4iys0n"]
+
+[ext_resource type="Script" path="res://utilities/resource_types/song.gd" id="1_rftn2"]
+[ext_resource type="AudioStream" uid="uid://cg1e5raygg1y4" path="res://assets/sound/music/begin_game/OST 3 - Celtic Mist (Vocals) (Loopable).ogg" id="2_neyix"]
+
+[resource]
+script = ExtResource("1_rftn2")
+song = ExtResource("2_neyix")
+title = "Celtic Mist (Vocals)"
+artist = "ELVGames & PEGGU-SENSEI"
+album = "Atmospheric Harp Music Volume 1"
+album_link = "https://elvgames.itch.io/atmospheric-harp-music"

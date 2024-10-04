@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bffuc1fqc2os1"
+path="res://.godot/imported/Snow Ball Impact A.wav-5a2ba2354e08dcab651c829f71ffa833.sample"
+
+[deps]
+
+source_file="res://assets/sound/sfx/ice_bomb/Snow Ball Impact A.wav"
+dest_files=["res://.godot/imported/Snow Ball Impact A.wav-5a2ba2354e08dcab651c829f71ffa833.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

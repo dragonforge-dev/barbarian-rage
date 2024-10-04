@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Song" load_steps=3 format=3 uid="uid://b0avpodru1sql"]
+
+[ext_resource type="Script" path="res://utilities/resource_types/song.gd" id="1_m3k0i"]
+[ext_resource type="AudioStream" uid="uid://fs0tu4yxl0j7" path="res://assets/sound/music/depression/Fantasy Vol4 Her Loss Main.ogg" id="2_v882i"]
+
+[resource]
+script = ExtResource("1_m3k0i")
+song = ExtResource("2_v882i")
+title = "Her Loss"
+artist = "Ovani Sound"
+album = "Fantasy Music Pack Vol. 4"
+album_link = "https://ovanisound.com/products/fantasy-music-pack-vol-4"

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Song" load_steps=3 format=3 uid="uid://dxkv1pfgtb28o"]
+
+[ext_resource type="Script" path="res://utilities/resource_types/song.gd" id="1_wv68d"]
+[ext_resource type="AudioStream" uid="uid://whquu43hfrr7" path="res://assets/sound/music/acceptance/OST 4 - Meadow Path (Loopable).ogg" id="2_6nfor"]
+
+[resource]
+script = ExtResource("1_wv68d")
+song = ExtResource("2_6nfor")
+title = "Meadow Path"
+artist = "ELVGames & PEGGU-SENSEI"
+album = "Atmospheric Harp Music Volume 2"
+album_link = "https://elvgames.itch.io/atmospheric-harp-music-ii"

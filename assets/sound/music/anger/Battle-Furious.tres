@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Song" load_steps=3 format=3 uid="uid://bsa0kb1ivqswb"]
+
+[ext_resource type="Script" path="res://utilities/resource_types/song.gd" id="1_5yjrf"]
+[ext_resource type="AudioStream" uid="uid://cyjyyjhmcvcw5" path="res://assets/sound/music/anger/Battle-Furious.mp3" id="2_hcr4f"]
+
+[resource]
+script = ExtResource("1_5yjrf")
+song = ExtResource("2_hcr4f")
+title = "Furious Battle"
+artist = "YouFulca"
+album = "Wingless Seraph"
+album_link = "https://youfulca.itch.io/legendary-jrpg-battle-music-pack"

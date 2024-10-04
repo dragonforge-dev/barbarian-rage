@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Song" load_steps=3 format=3 uid="uid://bas7v53gn26pq"]
+
+[ext_resource type="Script" path="res://utilities/resource_types/song.gd" id="1_r3ytn"]
+[ext_resource type="AudioStream" uid="uid://br7uek0dqvi1a" path="res://assets/sound/music/game_over/OLDMS02gameover7NL.wav" id="2_ancnk"]
+
+[resource]
+script = ExtResource("1_r3ytn")
+song = ExtResource("2_ancnk")
+title = "Game Over 7"
+artist = "escalonamusic.com"
+album = "Action RPG Music Free"
+album_link = "https://escalonamusic.itch.io/action-rpg-music-free"

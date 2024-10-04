@@ -1,0 +1,37 @@
+[gd_scene load_steps=16 format=3 uid="uid://bao2bpsj8wgyt"]
+
+[ext_resource type="PackedScene" uid="uid://bm2vhtpokidoe" path="res://assets/models/treasure/coin_stack_small.gltf" id="1_i5h0d"]
+[ext_resource type="Script" path="res://environment/pickups/pickup.gd" id="2_7060r"]
+[ext_resource type="AudioStream" uid="uid://bvlvu0kntpix" path="res://assets/sound/sfx/pickups/coins_pickup_shake_01.wav" id="3_d61fk"]
+[ext_resource type="AudioStream" uid="uid://c6qxcl3qteacq" path="res://assets/sound/sfx/pickups/coins_pickup_shake_02.wav" id="4_ivb44"]
+[ext_resource type="AudioStream" uid="uid://dtb1m46ax6hfv" path="res://assets/sound/sfx/pickups/coins_pickup_shake_03.wav" id="5_j4psk"]
+[ext_resource type="AudioStream" uid="uid://b5uvr61qp8kc7" path="res://assets/sound/sfx/pickups/coins_pickup_shake_04.wav" id="6_wfp2y"]
+[ext_resource type="AudioStream" uid="uid://ddtlgr7vocx6n" path="res://assets/sound/sfx/pickups/coins_pickup_shake_05.wav" id="7_rawfs"]
+[ext_resource type="AudioStream" uid="uid://dftm7vif8tqjk" path="res://assets/sound/sfx/pickups/coins_pickup_shake_06.wav" id="8_moovk"]
+[ext_resource type="AudioStream" uid="uid://dqwypv1kaq4ca" path="res://assets/sound/sfx/pickups/coins_pickup_shake_07.wav" id="9_2xodu"]
+[ext_resource type="AudioStream" uid="uid://c7hvg1htb7c25" path="res://assets/sound/sfx/pickups/coins_pickup_shake_08.wav" id="10_r6jb0"]
+[ext_resource type="AudioStream" uid="uid://bpk41qyfb0d5d" path="res://assets/sound/sfx/pickups/coins_pickup_shake_09.wav" id="11_nxhrk"]
+[ext_resource type="AudioStream" uid="uid://bqft86tw0dyog" path="res://assets/sound/sfx/pickups/coins_pickup_shake_10.wav" id="12_5yol1"]
+[ext_resource type="AudioStream" uid="uid://bv83vysd3bwtv" path="res://assets/sound/sfx/pickups/coins_pickup_shake_11.wav" id="13_h6453"]
+[ext_resource type="Material" uid="uid://bghjp1kolxfxj" path="res://assets/materials/ice_101.material" id="14_frffg"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_cjcb4"]
+height = 0.5
+radius = 0.6
+
+[node name="peak_stack_small" instance=ExtResource("1_i5h0d")]
+script = ExtResource("2_7060r")
+item_name = "Peak"
+amount = Array[int]([4, 5])
+sound_on_pickup = Array[AudioStream]([ExtResource("3_d61fk"), ExtResource("4_ivb44"), ExtResource("5_j4psk"), ExtResource("6_wfp2y"), ExtResource("7_rawfs"), ExtResource("8_moovk"), ExtResource("9_2xodu"), ExtResource("10_r6jb0"), ExtResource("11_nxhrk"), ExtResource("12_5yol1"), ExtResource("13_h6453")])
+
+[node name="coin_stack_small" parent="." index="0"]
+material_override = ExtResource("14_frffg")
+
+[node name="PickupTrigger" type="Area3D" parent="." index="1"]
+collision_layer = 8
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickupTrigger" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("CylinderShape3D_cjcb4")

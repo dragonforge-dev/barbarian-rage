@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://whquu43hfrr7"
+path="res://.godot/imported/OST 4 - Meadow Path (Loopable).ogg-8b438d48da4b632f21acdac5fe1e093b.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sound/music/acceptance/OST 4 - Meadow Path (Loopable).ogg"
+dest_files=["res://.godot/imported/OST 4 - Meadow Path (Loopable).ogg-8b438d48da4b632f21acdac5fe1e093b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

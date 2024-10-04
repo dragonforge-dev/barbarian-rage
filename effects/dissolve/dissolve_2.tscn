@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://djy2g03rfemb"]
+
+[ext_resource type="Material" uid="uid://2bec5m1r1gih" path="res://effects/dissolve/dissolve_2.material" id="1_pirrc"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_y0gt5"]
+
+[node name="Dissolve2" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_pirrc")
+mesh = SubResource("SphereMesh_y0gt5")

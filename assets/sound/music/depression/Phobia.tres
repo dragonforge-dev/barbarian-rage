@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Song" load_steps=3 format=3 uid="uid://cd8vocxtjqbvm"]
+
+[ext_resource type="Script" path="res://utilities/resource_types/song.gd" id="1_4gnbg"]
+[ext_resource type="AudioStream" uid="uid://dkui4ghaytx31" path="res://assets/sound/music/depression/Horror Vol5 Phobia Main.ogg" id="2_pxlu3"]
+
+[resource]
+script = ExtResource("1_4gnbg")
+song = ExtResource("2_pxlu3")
+title = "Phobia"
+artist = "Ovani Sound"
+album = "Horror Music Pack Vol. 5"
+album_link = "https://ovanisound.com/products/horror-music-pack-vol-5"

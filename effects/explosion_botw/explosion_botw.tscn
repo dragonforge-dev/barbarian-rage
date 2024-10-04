@@ -1,0 +1,66 @@
+[gd_scene load_steps=14 format=3 uid="uid://bvwc8srqtowyp"]
+
+[ext_resource type="Shader" path="res://effects/explosion_botw/explosion_botw.gdshader" id="1_kg536"]
+[ext_resource type="Texture2D" uid="uid://blv4orivqnlgl" path="res://assets/textures/shader/explosion/blue_edit.png" id="2_rsdr1"]
+[ext_resource type="Texture2D" uid="uid://b5o403m1778yt" path="res://assets/textures/shader/explosion/green_edit.png" id="3_qe3tr"]
+[ext_resource type="Texture2D" uid="uid://dnj84cn13swcn" path="res://assets/textures/shader/explosion/red_edit.png" id="4_smy5d"]
+
+[sub_resource type="Gradient" id="Gradient_ckdoj"]
+offsets = PackedFloat32Array(0, 0.422819, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0.678431, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5h8yj"]
+gradient = SubResource("Gradient_ckdoj")
+
+[sub_resource type="Curve" id="Curve_i8q2b"]
+max_value = 100.0
+_data = [Vector2(0, 43.6056), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lqg7i"]
+curve = SubResource("Curve_i8q2b")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2t3o3"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = 1.00001
+angle_max = 720.0
+gravity = Vector3(0, 3, 0)
+radial_accel_min = -2.23517e-06
+radial_accel_max = 0.469998
+radial_accel_curve = SubResource("CurveTexture_lqg7i")
+scale_max = 2.0
+color_ramp = SubResource("GradientTexture1D_5h8yj")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ad3bn"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tbqf6"]
+seamless = true
+noise = SubResource("FastNoiseLite_ad3bn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3v47e"]
+render_priority = 0
+shader = ExtResource("1_kg536")
+shader_parameter/fire_color = Color(0.99, 0.31, 0.01, 1)
+shader_parameter/fire_strength = 4.3
+shader_parameter/warble_strength = 0.2
+shader_parameter/time_scale = 1.0
+shader_parameter/alpha_scissor = 0.23
+shader_parameter/red_texture = ExtResource("4_smy5d")
+shader_parameter/green_texture = ExtResource("3_qe3tr")
+shader_parameter/blue_texture = ExtResource("2_rsdr1")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_tbqf6")
+
+[sub_resource type="QuadMesh" id="QuadMesh_g1brb"]
+material = SubResource("ShaderMaterial_3v47e")
+
+[node name="Explosion_BOTW" type="Node3D"]
+
+[node name="Explosion" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 64
+one_shot = true
+speed_scale = 1.2
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_2t3o3")
+draw_pass_1 = SubResource("QuadMesh_g1brb")

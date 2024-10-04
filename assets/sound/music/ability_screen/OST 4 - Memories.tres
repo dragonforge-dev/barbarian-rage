@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Song" load_steps=3 format=3 uid="uid://l8rrtwkbws7b"]
+
+[ext_resource type="Script" path="res://utilities/resource_types/song.gd" id="1_fs6me"]
+[ext_resource type="AudioStream" uid="uid://mser6170nkvh" path="res://assets/sound/music/ability_screen/OST 4 - Memories (Loopable).ogg" id="2_g26eu"]
+
+[resource]
+script = ExtResource("1_fs6me")
+song = ExtResource("2_g26eu")
+title = "Memories"
+artist = "ELVGames & PEGGU-SENSEI"
+album = "Epic Medieval Music Pack II"
+album_link = "https://elvgames.itch.io/epic-medieval-ii-music-pack"

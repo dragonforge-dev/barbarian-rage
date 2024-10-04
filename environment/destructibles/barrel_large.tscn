@@ -1,0 +1,108 @@
+[gd_scene load_steps=11 format=3 uid="uid://cqn7l5h7l75w8"]
+
+[ext_resource type="PackedScene" uid="uid://ygh7qtxmo5mc" path="res://assets/models/dungeon/decorations/barrel_large.gltf" id="1_obpiw"]
+[ext_resource type="Script" path="res://environment/destructibles/destructible.gd" id="2_uyvyv"]
+[ext_resource type="AudioStream" uid="uid://nmwwctvyl33t" path="res://assets/sound/sfx/destructibles/Wood Chop Loose C.wav" id="3_gtsvx"]
+[ext_resource type="AudioStream" uid="uid://dtal012upybuk" path="res://assets/sound/sfx/destructibles/Furniture Destruction 002.wav" id="4_5kuth"]
+[ext_resource type="PackedScene" uid="uid://dddjby03cutgv" path="res://environment/pickups/peak_stack_medium.tscn" id="13_75rb4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kh8pp"]
+radius = 1.0
+
+[sub_resource type="Animation" id="Animation_7gl0o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("barrel_large:material_override:shader_parameter/DissolveHeight")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("barrel_large:material_override:shader_parameter/Dissolve")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ajb35"]
+resource_name = "Spawn"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("barrel_large:material_override:shader_parameter/DissolveHeight")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.1, 2.1]
+}
+
+[sub_resource type="Animation" id="Animation_2syjx"]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("barrel_large:material_override:shader_parameter/Dissolve")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"death_complete"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_riljx"]
+_data = {
+&"Spawn": SubResource("Animation_ajb35"),
+&"Death": SubResource("Animation_2syjx"),
+&"RESET": SubResource("Animation_7gl0o")
+}
+
+[node name="barrel_large" instance=ExtResource("1_obpiw")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("2_uyvyv")
+item_name = "Large Barrel"
+health = 40
+hit_sound = ExtResource("3_gtsvx")
+death_sound = ExtResource("4_5kuth")
+loot = Array[PackedScene]([ExtResource("13_75rb4")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_kh8pp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+&"": SubResource("AnimationLibrary_riljx")
+}

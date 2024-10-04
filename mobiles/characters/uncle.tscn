@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://co6opbvlg3xlc"]
+
+[ext_resource type="PackedScene" uid="uid://cqhb7yxlaysv5" path="res://assets/models/characters/Barbarian.glb" id="1_a72gx"]
+[ext_resource type="Texture2D" uid="uid://c1shr6p0gviy0" path="res://assets/textures/character/knight_texture_alt_A.png" id="2_dybm2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kqur1"]
+albedo_texture = ExtResource("2_dybm2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jqjjp"]
+albedo_texture = ExtResource("2_dybm2")
+
+[node name="Uncle" instance=ExtResource("1_a72gx")]
+
+[node name="1H_Axe_Offhand_Bone" parent="Rig/Skeleton3D" index="0"]
+transform = Transform3D(-0.999999, -1.17465e-07, 2.00909e-07, 1.0297e-07, -5.30967e-07, 0.999999, -1.957e-07, 0.999999, 6.23449e-07, 0.883132, 1.04926, 0.0333083)
+
+[node name="Barbarian_Round_Shield_Bone" parent="Rig/Skeleton3D" index="1"]
+transform = Transform3D(-0.999999, 2.40298e-06, -7.04971e-07, -8.02913e-07, -7.37598e-07, 0.999999, 2.32475e-06, 0.999999, 8.30081e-07, 0.883132, 1.20515, 0.0170112)
+
+[node name="1H_Axe_Bone" parent="Rig/Skeleton3D" index="2"]
+transform = Transform3D(0.999999, 1.88247e-07, -4.39071e-07, -3.79561e-07, -7.95385e-07, -0.999999, -1.1747e-07, 0.999999, -7.42514e-07, -0.883132, 1.04926, 0.0333086)
+
+[node name="2H_Axe_Bone" parent="Rig/Skeleton3D" index="3"]
+transform = Transform3D(0.999999, 1.88247e-07, -4.39071e-07, -3.79561e-07, -7.95385e-07, -0.999999, -1.1747e-07, 0.999999, -7.42514e-07, -0.883132, 1.04926, 0.0333086)
+
+[node name="Mug_Bone" parent="Rig/Skeleton3D" index="4"]
+transform = Transform3D(0.999999, 1.88247e-07, -4.39071e-07, -3.79561e-07, -7.95385e-07, -0.999999, -1.1747e-07, 0.999999, -7.42514e-07, -1.1837, 1.04926, -0.0156374)
+
+[node name="Barbarian_Hat_Bone" parent="Rig/Skeleton3D" index="5"]
+transform = Transform3D(1, -2.20965e-22, 1.69407e-21, 2.20965e-22, 1, 0, -1.69407e-21, 0, 1, 0, 1.21587, -1.39099e-07)
+
+[node name="Barbarian_Hat" parent="Rig/Skeleton3D/Barbarian_Hat_Bone" index="0"]
+visible = true
+material_override = SubResource("StandardMaterial3D_kqur1")
+
+[node name="Barbarian_Cape_Bone" parent="Rig/Skeleton3D" index="6"]
+transform = Transform3D(1, 1.25214e-21, 0, -1.25214e-21, 1, 0, 0, 0, 1, -1.90735e-06, 1.21587, -1.39099e-07)
+
+[node name="Barbarian_Cape" parent="Rig/Skeleton3D/Barbarian_Cape_Bone" index="0"]
+visible = true
+material_overlay = SubResource("StandardMaterial3D_jqjjp")

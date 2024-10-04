@@ -1,0 +1,328 @@
+[gd_scene load_steps=20 format=3 uid="uid://bg33k1lp5b05s"]
+
+[ext_resource type="Script" path="res://effects/ice_flower/ice_flower_effect.gd" id="1_vhq4e"]
+[ext_resource type="ArrayMesh" uid="uid://d37cn8c3oqn3m" path="res://assets/models/effects/flower/flower_mesh.res" id="1_w5mln"]
+[ext_resource type="ArrayMesh" uid="uid://oashr1vs1ilc" path="res://assets/models/effects/flower/circle_mesh.obj" id="3_nbtfh"]
+[ext_resource type="Shader" uid="uid://lhko880j7nqj" path="res://effects/ice_flower/ice_circle_effect.tres" id="3_v052d"]
+[ext_resource type="Shader" uid="uid://dck5rx0lm5vqj" path="res://effects/ice_flower/snow_fall_effect.tres" id="5_4b6ja"]
+[ext_resource type="Texture2D" uid="uid://qmcyax08ao66" path="res://assets/textures/particles/star_06.png" id="5_df0od"]
+[ext_resource type="Texture2D" uid="uid://cy4wk3vab4eqb" path="res://assets/textures/particles/magic_03.png" id="6_5odlp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lhcvr"]
+render_priority = 0
+shader = ExtResource("3_v052d")
+shader_parameter/CircleColor = Color(0, 1.2, 0.7, 1)
+shader_parameter/Opacity = 0.0
+shader_parameter/ExtraOpacity = 0.1
+shader_parameter/Speed = Vector2(0, -1.2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dddov"]
+render_priority = 0
+shader = ExtResource("5_4b6ja")
+shader_parameter/MainTexture = ExtResource("5_df0od")
+
+[sub_resource type="Curve" id="Curve_vt1ns"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.512, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ygcm6"]
+texture_mode = 1
+curve = SubResource("Curve_vt1ns")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_isx6u"]
+lifetime_randomness = 0.5
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.0
+emission_ring_radius = 4.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+color = Color(0, 1, 0.8, 1)
+alpha_curve = SubResource("CurveTexture_ygcm6")
+
+[sub_resource type="QuadMesh" id="QuadMesh_awu5w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0srcy"]
+render_priority = 0
+shader = ExtResource("5_4b6ja")
+shader_parameter/MainTexture = ExtResource("6_5odlp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ovde2"]
+lifetime_randomness = 0.5
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.0
+emission_ring_radius = 4.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 0.5
+initial_velocity_max = 1.5
+gravity = Vector3(0, 0, 0)
+scale_min = 0.3
+scale_max = 0.5
+color = Color(0, 1, 0.8, 1)
+alpha_curve = SubResource("CurveTexture_ygcm6")
+
+[sub_resource type="Animation" id="Animation_jynns"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlowerMesh:blend_shapes/Shrinkwrap")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlowerMesh:mesh:surface_0/material:shader_parameter/Opacity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CircleMesh:material_override:shader_parameter/Opacity")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GPUParticles3D:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GPUParticles3D2:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("FlowerMesh:blend_shapes/Dissipate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_tx86x"]
+resource_name = "Blossom"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlowerMesh:blend_shapes/Shrinkwrap")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlowerMesh:mesh:surface_0/material:shader_parameter/Opacity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CircleMesh:material_override:shader_parameter/Opacity")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.233333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GPUParticles3D:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GPUParticles3D2:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("FlowerMesh:blend_shapes/Dissipate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ly5ws"]
+resource_name = "Dissipate"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlowerMesh:mesh:surface_0/material:shader_parameter/Opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CircleMesh:material_override:shader_parameter/Opacity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GPUParticles3D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GPUParticles3D2:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FlowerMesh:blend_shapes/Dissipate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uk4tj"]
+_data = {
+&"RESET": SubResource("Animation_jynns"),
+&"Dissipate": SubResource("Animation_ly5ws"),
+&"Blossom": SubResource("Animation_tx86x")
+}
+
+[node name="HealingFlowerEffect" type="Node3D"]
+script = ExtResource("1_vhq4e")
+
+[node name="FlowerMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+mesh = ExtResource("1_w5mln")
+blend_shapes/Dissipate = 0.0
+blend_shapes/Shrinkwrap = 1.0
+
+[node name="CircleMesh" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_lhcvr")
+mesh = ExtResource("3_nbtfh")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+material_override = SubResource("ShaderMaterial_dddov")
+emitting = false
+amount = 40
+lifetime = 3.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_isx6u")
+draw_pass_1 = SubResource("QuadMesh_awu5w")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+material_override = SubResource("ShaderMaterial_0srcy")
+emitting = false
+amount = 10
+lifetime = 3.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ovde2")
+draw_pass_1 = SubResource("QuadMesh_awu5w")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_uk4tj")
+}

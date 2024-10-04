@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://cysl374qkxa0t"]
+
+[ext_resource type="Script" path="res://abilities/cryot_ice_shard.gd" id="1_lo2bk"]
+[ext_resource type="PackedScene" uid="uid://vgjkig5gpnly" path="res://abilities/ice_shard_small.tscn" id="2_qne5f"]
+[ext_resource type="AudioStream" uid="uid://sjh2a7a50tnv" path="res://assets/sound/sfx/ice_shard/magic_spell_ice_05.wav" id="3_fc8fb"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_efo53"]
+height = 1.0
+radius = 25.0
+
+[node name="CryotIceShard" type="Area3D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_lo2bk")
+ice_shard_scene = ExtResource("2_qne5f")
+activation_sound = ExtResource("3_fc8fb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_efo53")

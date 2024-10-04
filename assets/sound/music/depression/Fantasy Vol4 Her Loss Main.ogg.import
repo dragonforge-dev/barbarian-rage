@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://fs0tu4yxl0j7"
+path="res://.godot/imported/Fantasy Vol4 Her Loss Main.ogg-8e0ae511793d39fb31338edf542d5379.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sound/music/depression/Fantasy Vol4 Her Loss Main.ogg"
+dest_files=["res://.godot/imported/Fantasy Vol4 Her Loss Main.ogg-8e0ae511793d39fb31338edf542d5379.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

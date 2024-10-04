@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Song" load_steps=3 format=3 uid="uid://17yodtvu7frn"]
+
+[ext_resource type="Script" path="res://utilities/resource_types/song.gd" id="1_nbjrq"]
+[ext_resource type="AudioStream" uid="uid://clhfl32msk0i0" path="res://assets/sound/music/success/MS01triumph2NL.wav" id="2_uemro"]
+
+[resource]
+script = ExtResource("1_nbjrq")
+song = ExtResource("2_uemro")
+title = "Triumph 2"
+artist = "escalonamusic.com"
+album = "Action RPG Music Free"
+album_link = "https://escalonamusic.itch.io/action-rpg-music-free"

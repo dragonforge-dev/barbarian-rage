@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://3ck8joc1jyci"]
+
+[ext_resource type="PackedScene" uid="uid://bfol152ijyfd7" path="res://assets/models/treasure/coin.gltf" id="1_k8lcm"]
+[ext_resource type="Script" path="res://environment/pickups/pickup.gd" id="2_fdvp0"]
+[ext_resource type="AudioStream" uid="uid://bvlvu0kntpix" path="res://assets/sound/sfx/pickups/coins_pickup_shake_01.wav" id="3_js2tc"]
+[ext_resource type="AudioStream" uid="uid://bv83vysd3bwtv" path="res://assets/sound/sfx/pickups/coins_pickup_shake_11.wav" id="4_l5ffx"]
+[ext_resource type="Material" uid="uid://bghjp1kolxfxj" path="res://assets/materials/ice_101.material" id="5_l3nqr"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tjaia"]
+height = 0.25
+
+[node name="peak" instance=ExtResource("1_k8lcm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07, 0)
+script = ExtResource("2_fdvp0")
+item_name = "Peak"
+sound_on_pickup = Array[AudioStream]([ExtResource("3_js2tc"), ExtResource("4_l5ffx")])
+
+[node name="coin" parent="." index="0"]
+material_override = ExtResource("5_l3nqr")
+
+[node name="PickupTrigger" type="Area3D" parent="." index="1"]
+collision_layer = 8
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickupTrigger" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
+shape = SubResource("CylinderShape3D_tjaia")
